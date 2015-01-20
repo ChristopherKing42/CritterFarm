@@ -1,0 +1,7 @@
+Stats
+
+* Health
+* Hunger
+* Happiness
+
+Each stat will be stored as a global variable.
