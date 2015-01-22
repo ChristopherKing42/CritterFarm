@@ -36,4 +36,4 @@ Ending
 -Intelligents < 1 (alzheimers/lost)
               > 20 (over run the world)
 
-Each stat will be stored as a global variable.
+Each item will be stored as a global variable.
