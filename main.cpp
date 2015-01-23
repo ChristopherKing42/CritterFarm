@@ -31,6 +31,15 @@ void loop(string name, string species)
              << "Books: " << books << endl
              << "Gumnuts: " << money << endl;
         cout << endl;
+        if (health < 05) cout << "Your pet is sickly." << endl;
+        if (health > 15) cout << "Your pet is healthy looking." << endl;
+        if (nutrition < 05) cout << "Your pet is looking undernurished." << endl;
+        if (nutrition > 15) cout << "Your pet is getting fat." << endl;
+        if (happiness < 05) cout << "Your pet seems depressed." << endl;
+        if (happiness > 15) cout << "Your pet seems happy." << endl;
+        if (intelligence < 05) cout << "Your pet is stupid." << endl;
+        if (intelligence > 15) cout << "Your pet is unnervingly intelligent." << endl;
+        cout << endl;
         cout << "A) Medicate your pet" << endl
              << "B) Feed your pet" << endl
              << "C) Entertain your pet" << endl
@@ -59,7 +68,7 @@ void loop(string name, string species)
                 else
                 {
                     medicine--;
-                    health*=1.05; //Increase by 5%
+                    health*=1.15; //Increase by 5%
                 }
             }
             break;
@@ -72,7 +81,7 @@ void loop(string name, string species)
             else
             {
                 pet_feed--;
-                nutrition *= 1.05;
+                nutrition *= 1.15;
             }
             break;
         case 'C':
@@ -91,7 +100,7 @@ void loop(string name, string species)
                 else
                 {
                     toy--; //Toy is destroyed in process of playing
-                    happiness*=1.05;
+                    happiness*=1.15;
                 }
             }
             break;
@@ -104,7 +113,7 @@ void loop(string name, string species)
             else
             {
                 books--; //Book is destroyed in process of reading
-                intelligence *= 1.05;
+                intelligence *= 1.15;
             }
             break;
         case 'E':
