@@ -1,36 +1,25 @@
-#include <iostream>
-#include <string>
-using namespace std;
-unsigned int medicine = 0;
-unsigned int pet_feed = 0;
-unsigned int toy = 0;
-unsigned int books = 0;
-void loop(string name, string species);
-unsigned int store(unsigned int money);
-string name();
-string species();
-void end();
-int main()
-{
-    return;
-}
-void loop(string name, string species)
-{
-    return;
-}
+//#include <ctype>
+//#include <studio>
+
+
 unsigned int store(unsigned int money)
 {
-    return 10;
-}
-string name()
-{
-    return "Name";
-}
-string species()
-{
-    return "Species";
-}
-void end()
-{
-    cout << "End" << endl;
+    unsigned int bank_account;
+    string action;
+    string buy("buy");
+    string sell("sell");
+    
+    cout<<"Howd'y there!  What can I do for you today?"<<endl;
+    cout<<"Would you like to buy or sell?"<<endl;
+    cout<<endl;
+    getline(cin, action);
+    
+    isupper(action) = tolower(action);
+    
+    if(action==sell)
+    {
+        
+    }
+    
+    return bank_account;
 }
