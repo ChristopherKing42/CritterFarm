@@ -9,7 +9,7 @@ void loop(string name, string species);    //Loops program
 unsigned int store(unsigned int money); //Allow users to buy items
 string name();    //Prompt user for name
 string species(); //Prompt user for species
-void end();      //Tells user fate of critter when it ends
+void end(char end);      //Tells user fate of critter when it ends
 int main()
 {
     loop(name(), species());
@@ -122,6 +122,38 @@ void loop(string name, string species)
         case 'F':
             money = store(money);
         }
+
+        bool gameOver = false;
+        if (health < 1)
+            {
+                end('g');
+                gameOver = true;
+            }
+        if (nutrition < 1)
+            {
+                end('f');
+                gameOver = true;
+            }
+        if (nutrition > 20)
+            {
+                end('d');
+                gameOver = true;
+            }
+        if (happiness < 1)
+            {
+                end('r');
+                gameOver = true;
+            }
+        if (intelligence < 1)
+            {
+                end('l');
+                gameOver = true;
+            }
+        if (health > 20)
+            {
+                end('w');
+                gameOver = true;
+            }
     }
 
 }
@@ -137,7 +169,7 @@ string species()
 {
     return "Species";
 }
-void end()
+void end(char end)
 {
     cout << "End" << endl;
 }
