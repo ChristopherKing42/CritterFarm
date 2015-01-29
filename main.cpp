@@ -9,10 +9,11 @@ void loop(string name, string species);    //Loops program
 unsigned int store(unsigned int money); //Allow users to buy items
 string name();    //Prompt user for name
 string species(); //Prompt user for species
-void end(char end);      //Tells user fate of critter when it ends
+string end(char end);      //Tells user fate of critter when it ends
 int main()
 {
     loop(name(), species());
+    cout << "GAME OVER!" << endl;
 }
 void loop(string name, string species)
 {
@@ -122,38 +123,18 @@ void loop(string name, string species)
         case 'F':
             money = store(money);
         }
-
-        bool gameOver = false;
-        if (health < 1)
-            {
-                end('g');
-                gameOver = true;
-            }
-        if (nutrition < 1)
-            {
-                end('f');
-                gameOver = true;
-            }
-        if (nutrition > 20)
-            {
-                end('d');
-                gameOver = true;
-            }
-        if (happiness < 1)
-            {
-                end('r');
-                gameOver = true;
-            }
-        if (intelligence < 1)
-            {
-                end('l');
-                gameOver = true;
-            }
-        if (health > 20)
-            {
-                end('w');
-                gameOver = true;
-            }
+        string msg;
+        if (health < 1) msg = end('g');
+        if (nutrition < 1) msg = end('f');
+        if (nutrition > 20) msg= end('d');
+        if (happiness < 1) msg = end('r');
+        if (intelligence < 1) msg = end('l');
+        if (intelligence > 20) msg = end('t');
+        if (msg != "")
+        {
+            cout << msg << endl;
+            break;
+        }
     }
 
 }
@@ -169,7 +150,16 @@ string species()
 {
     return "Species";
 }
-void end(char end)
+string end(char ending)
 {
-    cout << "End" << endl;
+    switch(ending)
+    {
+        case 'g': return "Your critter fades away.";
+        case 'f': return "Your critter faints.";
+        case 'd': return "Your critter is institutionalized due to diabetes.";
+        case 'r': return "Your critter runs away.";
+        case 'l': return "Your critter gets lost.";
+        case 't': return "Your critter takes over the world.";
+        default : return "";
+    }
 }
