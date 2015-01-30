@@ -6,7 +6,7 @@ unsigned int pet_feed = 0;
 unsigned int toy = 0;
 unsigned int books = 0;
 void loop(string name, string species);    //Loops program
-unsigned int store(unsigned int money); //Allow users to buy items
+float store(float money); //Allow users to buy items
 string name();    //Prompt user for name
 string species(); //Prompt user for species
 string end(char end);      //Tells user fate of critter when it ends
@@ -21,7 +21,7 @@ void loop(string name, string species)
     float nutrition = 10;
     float happiness = 10;
     float intelligence = 10;
-    unsigned int money = 0;
+    float money = 0;
 
     while(true)
     {
@@ -123,6 +123,11 @@ void loop(string name, string species)
         case 'F':
             money = store(money);
         }
+
+        health *= 0.70;
+        nutrition *= 0.70;
+        happiness *= 0.70;
+        intelligence *= 0.70;
         string msg;
         if (health < 1) msg = end('g');
         if (nutrition < 1) msg = end('f');
@@ -138,7 +143,7 @@ void loop(string name, string species)
     }
 
 }
-unsigned int store(unsigned int money)
+float store(float money)
 {
     return 10;
 }
