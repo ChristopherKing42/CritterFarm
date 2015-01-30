@@ -41,19 +41,19 @@ void loop(string name, string species)
         if (intelligence < 05) cout << "Your pet is stupid." << endl;
         if (intelligence > 15) cout << "Your pet is unnervingly intelligent." << endl;
         cout << endl;
-        cout << "A) Medicate your pet" << endl
-             << "B) Feed your pet" << endl
-             << "C) Entertain your pet" << endl
-             << "D) Educate your pet" << endl
-             << "E) Work in the salt mines" << endl
-             << "F) Go to the store" << endl;
+        cout << "a) Medicate your pet" << endl
+             << "b) Feed your pet" << endl
+             << "c) Entertain your pet" << endl
+             << "d) Educate your pet" << endl
+             << "e) Work in the salt mines" << endl
+             << "f) Go to the store" << endl;
 
         char answer;
         cin >> answer;
         cout << endl;
         switch(answer)
         {
-        case 'A':
+        case 'a':
             if (medicine == 0) //Medicine is  necessary
             {
                 cout << "Sorry, you have no medicine." << endl;
@@ -73,7 +73,7 @@ void loop(string name, string species)
                 }
             }
             break;
-        case 'B':
+        case 'b':
             if (pet_feed == 0)
             {
                 cout << "Sorry, you have no food." << endl;
@@ -85,7 +85,7 @@ void loop(string name, string species)
                 nutrition *= 1.15;
             }
             break;
-        case 'C':
+        case 'c':
             if (toy == 0)
             {
                 cout << "Sorry, you have no toys." << endl; //You can't play with a pet without a toy
@@ -105,7 +105,7 @@ void loop(string name, string species)
                 }
             }
             break;
-        case 'D':
+        case 'd':
             if (books == 0)
             {
                 cout << "Sorry, you have no books." << endl;
@@ -117,10 +117,10 @@ void loop(string name, string species)
                 intelligence *= 1.15;
             }
             break;
-        case 'E':
+        case 'e':
             money++;
             break;
-        case 'F':
+        case 'f':
             money = store(money);
         }
 
