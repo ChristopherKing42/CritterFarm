@@ -1,3 +1,8 @@
+//#include <ctype>
+//#include <studio>
+//#include <windows.h>
+
+
 float store(float money)
 {
     string item;
@@ -13,14 +18,12 @@ float store(float money)
     cout<<endl;
     cout<<"Commands include \"buy\", \"sell\", or \"exit\"."<<endl;
     cout<<endl;
-    cout<<"Would you like to buy or sell ?"<<endl;
+    cout<<"Would you like to buy or sell? "<<endl;
     cout<<endl;
+    cin.ignore(256, '\n');
     getline(cin, action);
-    getline(cin, item);
-
 
     transform(action.begin(), action.end(), action.begin(), ::tolower);
-    transform(item.begin(), item.end(), item.begin(), ::tolower);
 
     if(action=="sell")
     {
@@ -53,8 +56,6 @@ float store(float money)
             cost=pancake*amount_of_item;
             profit=profit+cost;
             }
-            else
-            cout<<"Sorry that is not an appropriate response. Try again."<<endl;
 
             if(item=="apples")
             {
@@ -63,8 +64,6 @@ float store(float money)
             cost=apples*amount_of_item;
             profit=profit+cost;
             }
-            else
-            cout<<"Sorry that is not an appropriate response. Try again."<<endl;
 
             if(item=="medicine")
             {
@@ -73,7 +72,8 @@ float store(float money)
             cost=medicine*amount_of_item;
             profit=profit+cost;
             }
-
+cout<<endl;
+cout<<endl;
         }
         while(loop!="exit");
     }
@@ -85,6 +85,7 @@ float store(float money)
         float pancake=1.25;
         float apples=.50;
         float medicine=3.50;
+        float books=5.00;
 
         do
         {
@@ -108,8 +109,6 @@ float store(float money)
             cost=pancake*amount_of_item;
             money=money-cost;
             }
-            else
-            cout<<"Sorry that is not an appropriate response. Try again."<<endl;
 
             if(item=="apples")
             {
@@ -118,8 +117,6 @@ float store(float money)
             cost=apples*amount_of_item;
             money=money-cost;
             }
-            else
-            cout<<"Sorry that is not an appropriate response. Try again."<<endl;
 
             if(item=="medicine")
             {
@@ -129,6 +126,15 @@ float store(float money)
             money=money-cost;
             }
 
+            if(item=="books")
+            {
+            cout<<"How many books would you like to buy? "<<endl;
+            cin>>amount_of_item;
+            cost=books*amount_of_item;
+            money=money-cost;
+            }
+cout<<endl;
+cout<<endl;
         }
         while(loop!="exit");
     }
