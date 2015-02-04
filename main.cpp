@@ -9,7 +9,7 @@ void loop(string name, string species);    //Loops program
 float store(float money); //Allow users to buy items
 string name();    //Prompt user for name
 string species(); //Prompt user for species
-string end(char end);      //Tells user fate of critter when it ends
+string end(char end, string name);      //Tells user fate of critter when it ends
 int main()
 {
     loop(name(), species());
@@ -23,6 +23,7 @@ void loop(string name, string species)
     float intelligence = 10;
     float money = 0;
 
+    string pet = name + " the " + species;
     while(true)
     {
         cout << "Here is your inventory: " << endl
@@ -32,14 +33,14 @@ void loop(string name, string species)
              << "Books: " << books << endl
              << "Gumnuts: " << money << endl;
         cout << endl;
-        if (health < 05) cout << "Your pet is sickly." << endl;
-        if (health > 15) cout << "Your pet is healthy looking." << endl;
-        if (nutrition < 05) cout << "Your pet is looking undernurished." << endl;
-        if (nutrition > 15) cout << "Your pet is getting fat." << endl;
-        if (happiness < 05) cout << "Your pet seems depressed." << endl;
-        if (happiness > 15) cout << "Your pet seems happy." << endl;
-        if (intelligence < 05) cout << "Your pet is stupid." << endl;
-        if (intelligence > 15) cout << "Your pet is unnervingly intelligent." << endl;
+        if (health < 05) cout << pet << " is sickly." << endl;
+        if (health > 15) cout << pet << " is healthy looking." << endl;
+        if (nutrition < 05) cout << pet << " is looking undernurished." << endl;
+        if (nutrition > 15) cout << pet << " is getting fat." << endl;
+        if (happiness < 05) cout << pet << " seems depressed." << endl;
+        if (happiness > 15) cout << pet << " seems happy." << endl;
+        if (intelligence < 05) cout << pet << " is stupid." << endl;
+        if (intelligence > 15) cout << pet << " is unnervingly intelligent." << endl;
         cout << endl;
         cout << "a) Medicate your pet" << endl
              << "b) Feed your pet" << endl
@@ -129,12 +130,12 @@ void loop(string name, string species)
         happiness *= 0.70;
         intelligence *= 0.70;
         string msg;
-        if (health < 1) msg = end('g');
-        if (nutrition < 1) msg = end('f');
-        if (nutrition > 20) msg= end('d');
-        if (happiness < 1) msg = end('r');
-        if (intelligence < 1) msg = end('l');
-        if (intelligence > 20) msg = end('t');
+        if (health < 1) msg = end('g', pet);
+        if (nutrition < 1) msg = end('f', pet);
+        if (nutrition > 20) msg= end('d', pet);
+        if (happiness < 1) msg = end('r', pet);
+        if (intelligence < 1) msg = end('l', pet);
+        if (intelligence > 20) msg = end('t', pet);
         if (msg != "")
         {
             cout << msg << endl;
@@ -149,22 +150,28 @@ float store(float money)
 }
 string name()
 {
-    return "Name";
+    string n;
+    cout << "What shall you name your critter? ";
+    getline(cin, n);
+    return n;
 }
 string species()
 {
-    return "Species";
+    string n;
+    cout << "What kind of Critter have you? ";
+    getline(cin, n);
+    return n;
 }
-string end(char ending)
+string end(char ending, string name)
 {
     switch(ending)
     {
-        case 'g': return "Your critter fades away.";
-        case 'f': return "Your critter faints.";
-        case 'd': return "Your critter is institutionalized due to diabetes.";
-        case 'r': return "Your critter runs away.";
-        case 'l': return "Your critter gets lost.";
-        case 't': return "Your critter takes over the world.";
+        case 'g': return name + " fades away.";
+        case 'f': return name + " faints.";
+        case 'd': return name + " is institutionalized due to diabetes.";
+        case 'r': return name + " runs away.";
+        case 'l': return name + " gets lost.";
+        case 't': return name + " takes over the world.";
         default : return "";
     }
 }
