@@ -1,8 +1,7 @@
-#include <ctype>
-#include <studio>
 #include <windows.h>
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 unsigned int medicine = 0;
 unsigned int pet_feed = 0;
@@ -180,44 +179,44 @@ float store(float money)
 
         do
         {
-        string item;
-        cout<<"Please select an item from the list below"<<endl;
-        cout<<endl;
-        cout<<"     * Apples"<<endl;
-        cout<<"     * Books"<<endl;
-        cout<<"     * Medicine"<<endl;
-        cout<<"     * Pancakes"<<endl;
-        cout<<endl;
-        cout<<"What item would you like to sell? ";
-        getline(cin, item);
+            string item;
+            cout<<"Please select an item from the list below"<<endl;
+            cout<<endl;
+            cout<<"     * Apples"<<endl;
+            cout<<"     * Books"<<endl;
+            cout<<"     * Medicine"<<endl;
+            cout<<"     * Pancakes"<<endl;
+            cout<<endl;
+            cout<<"What item would you like to sell? ";
+            getline(cin, item);
 
-         transform(item.begin(), item.end(), item.begin(), ::tolower);
+            transform(item.begin(), item.end(), item.begin(), ::tolower);
 
             if(item=="pancakes")
             {
-            cout<<"How many pancakes would you like to sell? ";
-            cin>>amount_of_item;
-            cost=pancake*amount_of_item;
-            profit=profit+cost;
+                cout<<"How many pancakes would you like to sell? ";
+                cin>>amount_of_item;
+                cost=pancake*amount_of_item;
+                profit=profit+cost;
             }
 
             if(item=="apples")
             {
-            cout<<"How many apples would you like to sell? ";
-            cin>>amount_of_item;
-            cost=apples*amount_of_item;
-            profit=profit+cost;
+                cout<<"How many apples would you like to sell? ";
+                cin>>amount_of_item;
+                cost=apples*amount_of_item;
+                profit=profit+cost;
             }
 
             if(item=="medicine")
             {
-            cout<<"How many vials of your medication would you like to sell? "<<endl;
-            cin>>amount_of_item;
-            cost=medicine*amount_of_item;
-            profit=profit+cost;
+                cout<<"How many vials of your medication would you like to sell? "<<endl;
+                cin>>amount_of_item;
+                cost=medicine*amount_of_item;
+                profit=profit+cost;
             }
-cout<<endl;
-cout<<endl;
+            cout<<endl;
+            cout<<endl;
         }
         while(loop!="exit");
     }
@@ -233,57 +232,58 @@ cout<<endl;
 
         do
         {
-        string item;
-        cout<<"Please select an item from the list below"<<endl;
-        cout<<endl;
-        cout<<"     * Apples"<<endl;
-        cout<<"     * Books"<<endl;
-        cout<<"     * Medicine"<<endl;
-        cout<<"     * Pancakes"<<endl;
-        cout<<endl;
-        cout<<"What item would you like to buy? ";
-        getline(cin, item);
+            string item;
+            cout<<"Please select an item from the list below"<<endl;
+            cout<<endl;
+            cout<<"     * Apples"<<endl;
+            cout<<"     * Books"<<endl;
+            cout<<"     * Medicine"<<endl;
+            cout<<"     * Pancakes"<<endl;
+            cout<<endl;
+            cout<<"What item would you like to buy? ";
+            getline(cin, item);
 
-        transform(item.begin(), item.end(), item.begin(), ::tolower);
+            transform(item.begin(), item.end(), item.begin(), ::tolower);
 
             if(item=="pancakes")
             {
-            cout<<"How many pancakes would you like to buy? ";
-            cin>>amount_of_item;
-            cost=pancake*amount_of_item;
-            money=money-cost;
+                cout<<"How many pancakes would you like to buy? ";
+                cin>>amount_of_item;
+                cost=pancake*amount_of_item;
+                money=money-cost;
             }
 
             if(item=="apples")
             {
-            cout<<"How many apples would you like to buy? ";
-            cin>>amount_of_item;
-            cost=apples*amount_of_item;
-            money=money-cost;
+                cout<<"How many apples would you like to buy? ";
+                cin>>amount_of_item;
+                cost=apples*amount_of_item;
+                money=money-cost;
             }
 
             if(item=="medicine")
             {
-            cout<<"How many vials of your medication would you like to buy? "<<endl;
-            cin>>amount_of_item;
-            cost=medicine*amount_of_item;
-            money=money-cost;
+                cout<<"How many vials of your medication would you like to buy? "<<endl;
+                cin>>amount_of_item;
+                cost=medicine*amount_of_item;
+                money=money-cost;
             }
 
             if(item=="books")
             {
-            cout<<"How many books would you like to buy? "<<endl;
-            cin>>amount_of_item;
-            cost=books*amount_of_item;
-            money=money-cost;
+                cout<<"How many books would you like to buy? "<<endl;
+                cin>>amount_of_item;
+                cost=books*amount_of_item;
+                money=money-cost;
             }
-cout<<endl;
-cout<<endl;
+            cout<<endl;
+            cout<<endl;
         }
         while(loop!="exit");
     }
 
     return money;
+}
 string name()
 {
     string n;
@@ -302,12 +302,19 @@ string end(char ending, string name)
 {
     switch(ending)
     {
-        case 'g': return name + " fades away.";
-        case 'f': return name + " faints.";
-        case 'd': return name + " is institutionalized due to diabetes.";
-        case 'r': return name + " runs away.";
-        case 'l': return name + " gets lost.";
-        case 't': return name + " takes over the world.";
-        default : return "";
+    case 'g':
+        return name + " fades away.";
+    case 'f':
+        return name + " faints.";
+    case 'd':
+        return name + " is institutionalized due to diabetes.";
+    case 'r':
+        return name + " runs away.";
+    case 'l':
+        return name + " gets lost.";
+    case 't':
+        return name + " takes over the world.";
+    default :
+        return "";
     }
 }
