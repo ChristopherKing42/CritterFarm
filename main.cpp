@@ -186,7 +186,7 @@ float store(float money)
             cout<<"What item would you like to sell? ";
             getline(cin, item);
 
-            transform(item.begin(), item.end(), item.begin(), ::tolower);
+            transform(item.begin(), item.end(), item.begin(), ::tolower); //make lowercase
 
             if(item=="pancakes")
             {
@@ -293,7 +293,7 @@ float store(float money)
                     continue;
                 }
                 money -= cost;
-                pet_feed+=3*amount_of_item;
+                pet_feed+=3*amount_of_item; //Pancakes equals 3 foods
             }
 
             if(item=="apples")
