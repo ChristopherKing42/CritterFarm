@@ -72,7 +72,7 @@ void loop(string name, string species)
                 else
                 {
                     medicine--;
-                    health*=1.15; //Increase by 5%
+                    health += 2; //Increase by 2
                 }
             }
             break;
@@ -85,7 +85,7 @@ void loop(string name, string species)
             else
             {
                 pet_feed--;
-                nutrition *= 1.15;
+                nutrition += 2;
             }
             break;
         case 'c':
@@ -104,7 +104,7 @@ void loop(string name, string species)
                 else
                 {
                     toy--; //Toy is destroyed in process of playing
-                    happiness*=1.15;
+                    happiness += 2;
                 }
             }
             break;
@@ -117,7 +117,7 @@ void loop(string name, string species)
             else
             {
                 books--; //Book is destroyed in process of reading
-                intelligence *= 1.15;
+                intelligence += 2;
             }
             break;
         case 'e':
@@ -127,16 +127,16 @@ void loop(string name, string species)
             money = store(money);
         }
 
-        health *= 0.70;
-        nutrition *= 0.70;
-        happiness *= 0.70;
-        intelligence *= 0.70;
+        health *= 0.95;
+        nutrition *= 0.95;
+        happiness *= 0.95;
+        intelligence *= 0.95;
         string msg;
-        if (health < 1) msg = end('g', pet);
-        if (nutrition < 1) msg = end('f', pet);
+        if (health < 2) msg = end('g', pet);
+        if (nutrition < 2) msg = end('f', pet);
         if (nutrition > 20) msg= end('d', pet);
-        if (happiness < 1) msg = end('r', pet);
-        if (intelligence < 1) msg = end('l', pet);
+        if (happiness < 2) msg = end('r', pet);
+        if (intelligence < 2) msg = end('l', pet);
         if (intelligence > 20) msg = end('t', pet);
         if (msg != "")
         {
@@ -167,12 +167,12 @@ float store(float money)
         transform(action.begin(), action.end(), action.begin(), ::tolower);
         if(action=="sell")
         {
-
             float cost;
-            float profit;
             float pancake=0.75;
             float apples=0.25;
-            float medicine=2.00;
+            float medicines=2.00;
+            float book = 4.50;
+            float toys = 2.00;
 
             string item;
             cout<<"Please select an item from the list below"<<endl;
@@ -192,13 +192,13 @@ float store(float money)
             {
                 cout<<"How many pancakes would you like to sell? ";
                 cin>>amount_of_item;
-                if (pancake < amount_of_item)
+                if (pet_feed < amount_of_item)
                 {
                     cout << "Sorry, you don't have enough." << endl;
                     continue;
                 }
                 cost=pancake*amount_of_item;
-                profit=profit+cost;
+                money += cost;
                 pet_feed-=3*amount_of_item;
             }
 
@@ -206,13 +206,13 @@ float store(float money)
             {
                 cout<<"How many apples would you like to sell? ";
                 cin>>amount_of_item;
-                if (apples < amount_of_item)
+                if (pet_feed < amount_of_item)
                 {
                     cout << "Sorry, you don't have enough." << endl;
                     continue;
                 }
                 cost=apples*amount_of_item;
-                profit=profit+cost;
+                money += cost;
                 pet_feed-=1*amount_of_item;
             }
 
@@ -220,13 +220,13 @@ float store(float money)
             {
                 cout<<"How many vials of your medication would you like to sell? "<<endl;
                 cin>>amount_of_item;
-                if (medicine < amount_of_item)
+                if (medicines < amount_of_item)
                 {
                     cout << "Sorry, you don't have enough." << endl;
                     continue;
                 }
-                cost=medicine*amount_of_item;
-                profit=profit+cost;
+                cost=medicines*amount_of_item;
+                money += cost;
                 medicine-=1*amount_of_item;
             }
             if(item=="toy")
@@ -239,21 +239,34 @@ float store(float money)
                     continue;
                 }
                 cost=medicine*amount_of_item;
-                profit=profit+cost;
-                toy+=1*amount_of_item;
+                money += cost;
+                toy-=1*amount_of_item;
+            }
+            if(item=="books")
+            {
+                cout<<"How many toys would you like to sell? "<<endl;
+                cin>>amount_of_item;
+                if (book < amount_of_item)
+                {
+                    cout << "Sorry, you don't have enough." << endl;
+                    continue;
+                }
+                cost=books*amount_of_item;
+                money += cost;
+                book-=1*amount_of_item;
             }
             cout<<endl;
             cout<<endl;
         }
         if(action=="buy")
         {
-            string loop;
             float cost;
             float profit;
             float pancake=1.25;
             float apples=.50;
             float medicine=3.50;
             float books=5.00;
+            float toys = 2.50;
 
 
             string item;
@@ -279,7 +292,7 @@ float store(float money)
                     cout << "Sorry, insufficient funds." << endl;
                     continue;
                 }
-                money=money-cost;
+                money -= cost;
                 pet_feed+=3*amount_of_item;
             }
 
@@ -293,7 +306,7 @@ float store(float money)
                     cout << "Sorry, insufficient funds." << endl;
                     continue;
                 }
-                money=money-cost;
+                money -= cost;
                 pet_feed+=1*amount_of_item;
             }
 
@@ -307,7 +320,7 @@ float store(float money)
                     cout << "Sorry, insufficient funds." << endl;
                     continue;
                 }
-                money=money-cost;
+                money -= cost;
                 medicine+=1*amount_of_item;
             }
 
@@ -321,7 +334,7 @@ float store(float money)
                     cout << "Sorry, insufficient funds." << endl;
                     continue;
                 }
-                money=money-cost;
+                money -= cost;
                 books+=1*amount_of_item;
             }
             if(item=="toy")
@@ -334,7 +347,7 @@ float store(float money)
                     cout << "Sorry, insufficient funds." << endl;
                     continue;
                 }
-                profit=profit+cost;
+                money -= cost;
                 toy+=1*amount_of_item;
             }
             cout<<endl;
