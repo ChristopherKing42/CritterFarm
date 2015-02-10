@@ -276,6 +276,7 @@ float store(float money)
             cout<<"     * Books"<<endl;
             cout<<"     * Medicine"<<endl;
             cout<<"     * Pancakes"<<endl;
+            cout<<"     * Toy"<<endl;
             cout<<endl;
             cout<<"What item would you like to buy? ";
             getline(cin, item);
@@ -339,7 +340,7 @@ float store(float money)
             }
             if(item=="toy")
             {
-                cout<<"How many toys would you like to sell? "<<endl;
+                cout<<"How many toys would you like to buy? "<<endl;
                 cin>>amount_of_item;
                 cost=medicine*amount_of_item;
                 if (cost > money)
