@@ -264,7 +264,7 @@ float store(float money)
             float profit;
             float pancake=1.25;
             float apples=.50;
-            float medicine=3.50;
+            float medicines=3.50;
             float books=5.00;
             float toys = 2.50;
 
@@ -314,7 +314,7 @@ float store(float money)
             {
                 cout<<"How many vials of your medication would you like to buy? "<<endl;
                 cin>>amount_of_item;
-                cost=medicine*amount_of_item;
+                cost=medicines*amount_of_item;
                 if (cost > money)
                 {
                     cout << "Sorry, insufficient funds." << endl;
